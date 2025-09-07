@@ -1,0 +1,256 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "BackupCore",
+      "Action": [
+        "iam:SimulatePrincipalPolicy",
+        "iam:GetAccountAuthorizationDetails",
+        "iam:ListUsers",
+        "iam:ListAccessKeys",
+        "iam:GetAccountAuthorizationDetails",
+        "iam:ListUserPolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListAttachedUserPolicies",
+        "iam:ListAttachedGroupPolicies",
+        "iam:ListGroupPolicies",
+        "iam:ListGroupsForUser",
+        "iam:GetRole",
+        "iam:ListInstanceProfiles",
+        "ec2:CopySnapshot",
+        "ec2:CreateSnapshot",
+        "ec2:CreateSnapshots",
+        "ec2:CreateTags",
+        "ec2:DeleteSnapshot",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeImageAttribute",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstanceAttribute",
+        "ec2:DescribeInstanceStatus",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceTypes",
+        "ec2:DescribeInstanceTypeOfferings",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribePlacementGroups",
+        "ec2:DescribeRegions",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSnapshotAttribute",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumeAttribute",
+        "ec2:DescribeVolumeStatus",
+        "ec2:DescribeVolumes",
+        "ec2:ModifySnapshotAttribute",
+        "ec2:ResetSnapshotAttribute",
+        "ec2:CreateImage",
+        "ec2:CopyImage",
+        "ec2:DescribeVpcs",
+        "ec2:ModifyImageAttribute",
+        "ec2:RegisterImage",
+        "ec2:DeregisterImage",
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "rds:DescribeDBInstances",
+        "rds:DescribeDBClusters",
+        "rds:DescribeDBClusterParameterGroups",
+        "rds:DescribeDBClusterParameters",
+        "rds:DescribeDBClusterSnapshots",
+        "rds:DescribeDBParameterGroups",
+        "rds:DescribeDBParameters",
+        "rds:DescribeDBSnapshots",
+        "rds:DescribeDBSubnetGroups",
+        "rds:DescribeOptionGroups",
+        "rds:DescribeDBParameterGroups",
+        "rds:DescribeDBClusterParameterGroups",
+        "rds:DescribeDBEngineVersions",
+        "redshift:DescribeClusterParameterGroups",
+        "redshift:DescribeClusterParameters",
+        "redshift:DescribeClusterSnapshots",
+        "redshift:DescribeClusterSubnetGroups",
+        "redshift:DescribeClusters",
+        "redshift:DescribeTags",
+        "dynamodb:DescribeTimeToLive",
+        "dynamodb:DescribeTable",
+        "dynamodb:DescribeBackup",
+        "dynamodb:ListTables",
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:CreateTable",
+        "dynamodb:ListBackups",
+        "dynamodb:Scan",
+        "kms:DescribeKey",
+        "kms:ListKeys",
+        "kms:ListAliases",
+        "kms:CreateGrant",
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "sts:AssumeRole",
+        "cloudwatch:GetMetricStatistics",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:AttachNetworkInterface",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:DescribeNetworkInterfacePermissions",
+        "ses:SendRawEmail",
+        "ses:ListVerifiedEmailAddresses",
+        "ses:VerifyEmailAddress",
+        "ses:GetIdentityVerificationAttributes",
+        "ssm:GetParametersByPath",
+        "ssm:SendCommand",
+        "ssm:GetCommandInvocation",
+        "ses:GetAccount"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "NativeSnapshotsLock",
+      "Action": [
+        "ec2:LockSnapshot",
+        "ec2:UnlockSnapshot",
+        "ec2:DescribeLockedSnapshots"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "RDSBackup",
+      "Action": [
+        "rds:CreateDBSnapshot",
+        "rds:CreateDBClusterSnapshot",
+        "rds:DeleteDBSnapshot",
+        "rds:DeleteDBClusterSnapshot",
+        "rds:AddTagsToResource",
+        "rds:ListTagsForResource",
+        "rds:CopyDBSnapshot",
+        "rds:CopyDBClusterSnapshot",
+        "rds:CreateDBInstance",
+        "rds:DeleteDBCluster",
+        "rds:DeleteDBInstance"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "Recovery",
+      "Action": [
+        "ec2:AllocateAddress",
+        "ec2:AssociateAddress",
+        "ec2:AttachVolume",
+        "ec2:CreateVolume",
+        "ec2:DeleteVolume",
+        "ec2:DetachVolume",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyVolumeAttribute",
+        "ec2:RunInstances",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "RecoveryDR",
+      "Action": [
+        "kms:ReEncryptFrom",
+        "kms:ReEncryptTo"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "RecoveryRDS",
+      "Action": [
+        "rds:RestoreDBInstanceFromDBSnapshot",
+        "rds:RestoreDBClusterFromSnapshot"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "Notification",
+      "Action": [
+        "sns:CreateTopic",
+        "sns:GetTopicAttributes",
+        "sns:Publish",
+        "sns:SetTopicAttributes",
+        "sns:Subscribe"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "CrossAccountOperations",
+      "Action": [
+        "rds:ModifyDBSnapshotAttribute",
+        "rds:ModifyDBClusterSnapshotAttribute"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "RedshiftOperations",
+      "Action": [
+        "redshift:CopyClusterSnapshot",
+        "redshift:CreateClusterSnapshot",
+        "redshift:CreateTags",
+        "redshift:DeleteTags",
+        "redshift:DeleteClusterSnapshot",
+        "redshift:RestoreFromClusterSnapshot",
+        "redshift:DeleteCluster",
+        "redshift:AuthorizeSnapshotAccess",
+        "redshift:RevokeSnapshotAccess"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "BackupDynamoDB",
+      "Action": [
+        "dynamodb:DeleteBackup",
+        "dynamodb:GetItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DescribeContinuousBackups",
+        "dynamodb:CreateBackup",
+        "dynamodb:Query",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ListTagsOfResource"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "RecoveryDynamoDB",
+      "Action": [
+        "dynamodb:TagResource",
+        "dynamodb:ListTables",
+        "dynamodb:UntagResource",
+        "dynamodb:RestoreTableFromBackup"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}

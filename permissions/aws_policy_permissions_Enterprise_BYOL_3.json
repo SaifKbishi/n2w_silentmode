@@ -1,0 +1,152 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EFS",
+      "Action": [
+        "elasticfilesystem:DescribeFileSystems",
+        "elasticfilesystem:DescribeTags",
+        "elasticfilesystem:CreateTags",
+        "elasticfilesystem:TagResource",
+        "elasticfilesystem:DescribeLifecycleConfiguration",
+        "elasticfilesystem:PutLifecycleConfiguration",
+        "elasticfilesystem:UpdateFileSystem",
+        "elasticfilesystem:PutBackupPolicy",
+        "elasticfilesystem:DescribeMountTargets",
+        "elasticfilesystem:CreateMountTarget",
+        "elasticfilesystem:DescribeAccessPoints",
+        "elasticfilesystem:CreateAccessPoint",
+        "elasticfilesystem:DescribeMountTargetSecurityGroups",
+        "elasticfilesystem:ListTagsForResource",
+        "backup:StartBackupJob",
+        "backup:DescribeBackupJob",
+        "backup:ListBackupJobs",
+        "backup:ListBackupVaults",
+        "backup:GetRecoveryPointRestoreMetadata",
+        "backup:ListTags",
+        "backup:StartRestoreJob",
+        "backup:DescribeRestoreJob",
+        "backup:ListRestoreJobs",
+        "backup:DeleteRecoveryPoint",
+        "backup:DescribeRecoveryPoint",
+        "backup:UpdateRecoveryPointLifecycle",
+        "backup:StartCopyJob",
+        "backup:DescribeCopyJob",
+        "iam:ListRoles"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "CostExplorer",
+      "Action": [
+        "pricing:GetProducts",
+        "ec2:GetConsoleOutput",
+        "ce:GetCostAndUsage"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "SupportedServiceRegions",
+      "Action": [
+        "ssm:GetParametersByPath"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "S3Sync",
+      "Action": [
+        "s3:DeleteObject",
+        "s3:GetBucketLocation",
+        "s3:GetObject",
+        "s3:GetObjectTagging",
+        "s3:ListAllMyBuckets",
+        "s3:ListBucket",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:PutObjectTagging"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "FSX",
+      "Action": [
+        "ds:DescribeDirectories",
+        "fsx:CreateBackup",
+        "fsx:CopyBackup",
+        "fsx:CreateFileSystem",
+        "fsx:CreateFileSystemFromBackup",
+        "fsx:CreateStorageVirtualMachine",
+        "fsx:CreateVolumeFromBackup",
+        "fsx:DeleteBackup",
+        "fsx:DescribeBackups",
+        "fsx:DescribeFileSystems",
+        "fsx:DescribeStorageVirtualMachines",
+        "fsx:DescribeVolumes",
+        "fsx:ListTagsForResource",
+        "fsx:TagResource",
+        "fsx:DescribeDataRepositoryAssociations"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "CBT",
+      "Action": [
+        "ebs:ListChangedBlocks",
+        "ebs:ListSnapshotBlocks",
+        "ssm:ListCommandInvocations"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "FLR",
+      "Action": [
+        "ebs:ListSnapshotBlocks",
+        "ebs:GetSnapshotBlock"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "SapHanaDB",
+      "Action": [
+        "ssm:PutParameter",
+        "ssm:GetParameter",
+        "ssm:DeleteParameter"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Sid": "SecretsManager",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
